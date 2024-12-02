@@ -115,12 +115,9 @@ function updateCart() {
 }
 
 function removeItem(itemName) {
-  // Check if the item exists in the cart
   if (cart[itemName]) {
-    // Remove the item from the cart object
     delete cart[itemName];
 
-    // Find the item card corresponding to this item and reset it
     const itemCards = document.querySelectorAll('.item-card');
     itemCards.forEach(card => {
       if (card.querySelector('.item-name2').textContent === itemName) {
@@ -143,20 +140,18 @@ fetch('data.json')
   })
   .catch(error => console.log("Error loading data:", error));
 
-// Function to render the dessert items dynamically
 function renderDesserts(dessertsData) {
   const dessertsContainer = document.getElementById("desserts-container");
 
-  // Create an intersection observer to add animation classes when cards come into view
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('animate__animated', 'animate__fadeInUp');
-        observer.unobserve(entry.target); // Stop observing once the card is visible
+        observer.unobserve(entry.target);
       }
     });
   }, {
-    threshold: 0.1 // Trigger when 10% of the element is in the viewport
+    threshold: 0.1 
   });
 
   dessertsData.map(dessert => {
@@ -186,10 +181,8 @@ function renderDesserts(dessertsData) {
       </div>
     `;
 
-    // Add the item card to the container
     dessertsContainer.appendChild(itemCard);
 
-    // Observe each item card for visibility
     observer.observe(itemCard);
   });
 }
@@ -206,12 +199,10 @@ function closeSignUp() {
 }
 
 function clearCart() {
-  // Clear the cart object
   for (const itemName in cart) {
     delete cart[itemName];
   }
 
-  // Reset the UI for each item
   const itemCards = document.querySelectorAll('.item-card');
   itemCards.forEach(card => {
     card.querySelector('.item-image').classList.remove('selected');
@@ -253,7 +244,6 @@ document.addEventListener("DOMContentLoaded", function () {
       modalContent.appendChild(modalItem);
     }
 
-    // Display order total
     const orderTotal = document.querySelector('.order-total p:last-child').textContent;
     const modalTotal = document.createElement('div');
     modalTotal.classList.add('order-total2');
