@@ -8,7 +8,11 @@
   <link rel="stylesheet" href="./index.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;700&family=Roboto+Slab:wght@700&family=Lora:wght@400&family=Lato:wght@400&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;700&family=Roboto+Slab:wght@700&family=Lora:wght@400&family=Lato:wght@400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -30,7 +34,7 @@
         <li class="active"><a href=""></a>Products</li>
       </ul>
     </div>
-    <div class="menu">
+    <div onclick="toggleMenu()"class="menu">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
         stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -48,6 +52,33 @@
     </div>
 
   </nav>
+
+  <!-- mobile nav -->
+  <div class="mob-header swing-in-left-fwd">
+    <div onclick="closeSignUp()" class="close-button">
+      <button aria-label="button" type="button">
+        <img class="close-btn" src="./assets/images/close.svg" alt="Close">
+      </button>
+    </div>
+    <div class="nav-links-mobile">
+      <ul class="nav-links-list-mobile">
+        <li><a href=""></a>Home</li>
+        <li><a href=""></a>Contact</li>
+        <li><a href=""></a>Services</li>
+        <li class="active"><a href=""></a>Products</li>
+      </ul>
+    </div>
+    <div class="nav-buttons-container-mobile">
+      <div class="nav-buttons-sign-in">
+        <button>Sign in</button>
+      </div>
+      <div onclick="displaySignUpmodal()" class="nav-buttons-sign-up">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+          Sign Up
+        </button>
+      </div>
+    </div>
+  </div>
   <div
     class="signUpModal fixed hidden inset-0 p-4 flex flex-wrap justify-center items-center w-full h-full z-[1000] before:fixed before:inset-0 before:w-full before:h-full before:bg-[rgba(0,0,0,0.5)] overflow-auto font-[sans-serif]">
     <div class="w-full max-w-lg bg-white shadow-lg rounded-lg p-8 relative">
@@ -203,38 +234,45 @@
       </div>
     </div>
   </main>
- <!-- Buy Now Section -->
-<section class="buy-now">
-  <h2>Ready to shop?</h2>
-  <p>Find the perfect products for your needs. Shop now and enjoy exclusive offers!</p>
-  <a href class="btn-buy-now">
-    <i class="fas fa-shopping-cart"></i> Shop Now
-  </a>
-</section>
+  <!-- Buy Now Section -->
+  <section class="buy-now">
+    <p class="shop-header">Ready to shop?</p>
+    <p>Find the perfect products for your needs. Shop now and enjoy exclusive offers!</p>
+    <a href class="btn-buy-now">
+      <i class="fas fa-shopping-cart"></i> Shop Now
+    </a>
+    <label for="colors">Choose a color:</label>
+<input list="colors" id="colors" name="colors">
+<datalist id="colors">
+  <option value="red">Red</option>
+  <option value="blue">Blue</option>
+  <option value="green">Green</option>
+</datalist>
+  </section>
 
-<!-- Footer Section -->
-<footer class="jrpserts-footer">
-  <div>&copy; 2024 John Renz. All rights reserved.</div>
-  <div class="footer-info">
-    <ul class="links-list">
-      <li><a href><i class="fas fa-info-circle"></i> About Us</a></li>
-      <li><a href><i class="fas fa-phone-alt"></i> Contact</a></li>
-      <li><a href><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
-      <li><a href><i class="fas fa-gavel"></i> Terms & Conditions</a></li>
-    </ul>
-  </div>
-  <div class="footer-social">
-    <a href="https://facebook.com" target="_blank" class="social-icon">
-      <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="https://twitter.com" target="_blank" class="social-icon">
-      <i class="fab fa-twitter"></i>
-    </a>
-    <a href="https://instagram.com" target="_blank" class="social-icon">
-      <i class="fab fa-instagram"></i>
-    </a>
-  </div>
-</footer>
+  <!-- Footer Section -->
+  <footer class="jrpserts-footer">
+    <div>&copy; 2024 John Renz. All rights reserved.</div>
+    <div class="footer-info">
+      <ul class="links-list">
+        <li><a href><i class="fas fa-info-circle"></i> About Us</a></li>
+        <li><a href><i class="fas fa-phone-alt"></i> Contact</a></li>
+        <li><a href><i class="fas fa-shield-alt"></i> Privacy Policy</a></li>
+        <li><a href><i class="fas fa-gavel"></i> Terms & Conditions</a></li>
+      </ul>
+    </div>
+    <div class="footer-social">
+      <a href="https://facebook.com" target="_blank" class="social-icon">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://twitter.com" target="_blank" class="social-icon">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://instagram.com" target="_blank" class="social-icon">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </footer>
 
 
 

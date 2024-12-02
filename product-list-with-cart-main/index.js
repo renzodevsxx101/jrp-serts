@@ -147,6 +147,18 @@ fetch('data.json')
 function renderDesserts(dessertsData) {
   const dessertsContainer = document.getElementById("desserts-container");
 
+  // Create an intersection observer to add animation classes when cards come into view
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+        observer.unobserve(entry.target); // Stop observing once the card is visible
+      }
+    });
+  }, {
+    threshold: 0.1 // Trigger when 10% of the element is in the viewport
+  });
+
   dessertsData.map(dessert => {
     const itemCard = document.createElement("div");
     itemCard.classList.add("item-card");
@@ -160,11 +172,10 @@ function renderDesserts(dessertsData) {
           <button class="add-quantity-btn" onclick="incrementQuantity(this)"><img src="./assets/images/icon-increment-quantity.svg" alt="add"></button>
         </div>
         <div class="add-to-cart-container">
-         <button onclick="addToCart(this)" class="add-to-cart-btn">
-          <img class="add-to-cart-icon" src="./assets/images/icon-add-to-cart.svg" alt="addToCart">Add to Cart
-        </button>
+          <button onclick="addToCart(this)" class="add-to-cart-btn">
+            <img class="add-to-cart-icon" src="./assets/images/icon-add-to-cart.svg" alt="addToCart">Add to Cart
+          </button>
         </div>
-       
       </div>
       <div class="item-info">
         <div>
@@ -175,9 +186,14 @@ function renderDesserts(dessertsData) {
       </div>
     `;
 
+    // Add the item card to the container
     dessertsContainer.appendChild(itemCard);
+
+    // Observe each item card for visibility
+    observer.observe(itemCard);
   });
 }
+
 
 function closeModal() {
   document.querySelector('.modal-overlay').style.display = 'none';
@@ -186,6 +202,7 @@ function closeModal() {
 
 function closeSignUp() {
   document.querySelector('.signUpModal').style.display = 'none';
+  document.querySelector('.mob-header').style.display = 'none';
 }
 
 function clearCart() {
@@ -256,4 +273,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function displaySignUpmodal(){
   document.querySelector('.signUpModal').style.display = 'flex';
+}
+
+function toggleMenu(){
+  document.querySelector('.mob-header').style.display = 'block';
 }
